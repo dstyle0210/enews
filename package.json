@@ -1,0 +1,24 @@
+{
+  "name": "enews",
+  "version": "1.0.0",
+  "description": "네이버 뉴스 경제면 연재물 자동 스크래핑해서 보기",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dstyle0210/enews.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dstyle0210/enews/issues"
+  },
+  "homepage": "https://github.com/dstyle0210/enews#readme",
+  "devDependencies": {
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "selenium-webdriver": "^3.4.0"
+  }
+}

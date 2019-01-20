@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>뉴스</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div v-for="news in list">
+        <a :href="news.link">[{{news.dateText}}] {{news.title}} </a>
+    </div>
+</div>
+<script type="text/javascript">
+var app;
+$(function(){
+    $.get("news.json",function(res){
+        $.each(res,function(idx,news){
+            news.date = (news.dateText.replace(/\./gi,""))*1;
+            news.link = "https://news.naver.com"+news.link;
+        });
+
+        res.sort(function (a, b) {
+            return a.date < b.date ? -1 : a.date > b.date ? 1 : 0;
+        });
+        console.log();
+        app = new Vue({
+            el: '#app',
+            data: {
+                list: res.reverse()
+            }
+        });
+    });
+});
+
+</script>
+</body>
+</html>

@@ -10,7 +10,15 @@ var newsListDB = [
     {title:"홍길용의 화식열전",cid:"1042886"},
     {title:"투자의창",cid:"1073596"},
     {title:"안재만의 투자노트",cid:"1073588"},
-    {title:"증시 맥짚기",cid:"1073586"}
+    {title:"증시 맥짚기",cid:"1073586"},
+    {title:"이종우의 흐름읽기",cid:"1073584"},
+    {title:"외환 브리핑",cid:"1073583"},
+    {title:"김현석의 월스트리트나우",cid:"1073575"},
+    {title:"고란의 어쩌다 투자",cid:"1073573"},
+    {title:"SBS 친절한경제",cid:"1055771"},
+    {title:"같은생각 다른느낌",cid:"1077368"},
+    {title:"김경수의 글로벌 경제",cid:"1083441"},
+    {title:"경제 한눈에 쏙",cid:"1083852"}
 ];
 
 var NEWS = [];
@@ -33,7 +41,7 @@ function getData(page){
                     DB.push({
                         title:$(this).find(" dt a").text(),
                         link:$(this).find(" dt a").attr("href"),
-                        date:$(this).find(" .s em").text()
+                        dateText:$(this).find(" .s em").text()
                     });
                 });
                 return DB;
@@ -41,7 +49,7 @@ function getData(page){
         }).then(function (sdata) {
             _.each(sdata,function(news){
                 news.title = news.title.replace(/\[.+\]/gi,"");
-                news.title = $.trim(news.title);
+                // news.title = $.trim(news.title);
                 news.title = "["+newsListDB[page].title +"] "+ news.title;
                 NEWS.push(news);
             });
